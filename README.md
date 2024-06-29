@@ -57,7 +57,7 @@ For register overlay GUI, if you use NeoForge (base on NeoForged commit 412c6ab 
 @EventBusSubscriber(modid = Fall.MODID, value = Dist.CLIENT, bus = Bus.MOD)
 public class Client {
         @SubscribeEvent
-        public static void onCustomizeGuiOverlayEvent(RegisterGuiLayersEvent event) {
+        public static void onRegisterGuiLayersEvent(RegisterGuiLayersEvent event) {
                 event.registerAboveAll(Box.fakeResourceLocation(Fall.MODID), new TestGUI());                
         }
 }
@@ -73,8 +73,9 @@ final class TestGUI implements LayeredDraw.Layer {
         public void render(
                         @Nonnull GuiGraphics pGuiGraphics,
                         @Nonnull DeltaTracker var2) {
-                <Your code>
+                pGuiGraphics.drawString(font, gameInstance.fpsString, 0, 0, 0xffffffff);
         }
 
 }
+
 ```
