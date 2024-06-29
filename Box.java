@@ -1,7 +1,26 @@
+/*
+* A Minecraft GUI creator
+* Copyright (C) 2024 Plasma (github.com/duoduo70)
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.resources.ResourceLocation;
 
 public class Box {
         public Box(int beginX, int beginY, int endX, int endY) {
@@ -223,7 +242,7 @@ public class Box {
         private void renderInventoryBox(GuiGraphics guiGraphics) {
                 int nlines = (this.endY - this.beginY) / 18;
                 int ncols = (this.endX - this.beginX) / 18;
-                // 渲染每格
+                // 渲染每格，每格 18 个“像素”
                 for (int nline = 0; nline < nlines; ++nline) {
                         for (int ncol = 0; ncol < ncols; ++ncol) {
                                 int blockBeginX = this.beginX + ncol * 18;
@@ -308,7 +327,11 @@ public class Box {
         public int endX;
         public int endY;
 
-        BoxType type = BoxType.NORMAL;
+        public BoxType type = BoxType.NORMAL;
+
+        public static ResourceLocation fakeResourceLocation(String modid) {
+                return ResourceLocation.fromNamespaceAndPath(modid, "__dynamic_gui");
+        }
 }
 
 enum BoxType {
