@@ -1,9 +1,11 @@
 # MinecraftGuiCreator
-It can help you to create a dynamic rendering GUI.(rathar than texture pack.)
+It can help you to create a dynamic rendering GUI (rathar than texture pack.)
+And you can register dynamic rendering overlay GUI layer like Vanilla hotbar.
 
 # Using
 
-For example, if you input something in the game chat, you can get a dynamic rendering GUI.
+For normal GUI, it is a simple example.
+If you input something in the game chat, you can see the GUI created by this example.
 ```java
 @EventBusSubscriber(modid = Fall.MODID, value = Dist.CLIENT)
 public class Client {
@@ -50,8 +52,8 @@ final class TestGUI extends Screen {
 
 ```
 
-For another example, if you use NeoForge (base on NeoForged commit 412c6ab (Minecraft 1.21, 2024/6/24) ):
-```
+For register overlay GUI, if you use NeoForge (base on NeoForged commit 412c6ab (Minecraft 1.21, 2024/6/24) ):
+```java
 @EventBusSubscriber(modid = Fall.MODID, value = Dist.CLIENT, bus = Bus.MOD)
 public class Client {
         @SubscribeEvent
@@ -76,4 +78,3 @@ final class TestGUI implements LayeredDraw.Layer {
 
 }
 ```
-You can register a dynamic rendering overlay gui layer (like vanilla hotbar).
